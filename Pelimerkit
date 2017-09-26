@@ -48,7 +48,7 @@ public class Pelimerkit {
         
         
         //Jos ostat enemmän kuin lompakko antaa periksi niin voit vähentää ostettavien merkkien määrää
-        while(rahamäärä < rahat){
+        while(x == 0){
         if(rahamäärä < rahat){
             int reply = JOptionPane.showConfirmDialog(null, "Yrität ostaa enemmän pelimerkkejä kuin lompakossasi on rahaa, haluatko vähentää ostamiesi merkkien määrää?.",
                     "",
@@ -64,7 +64,26 @@ public class Pelimerkit {
             pelimerkit = rahat / 10;
             setPelimerkit(pelimerkit);
             JOptionPane.showMessageDialog(null, "Sinulla on nyt " + pelimerkit + " pelimerkkiä");
+            x = 1;
                 }
+            }
+            
+            
+            if(reply == JOptionPane.NO_OPTION){
+                JOptionPane.showConfirmDialog(null, "Haluatko lähteä kasinolta?",
+                        "",
+                        JOptionPane.YES_NO_OPTION);
+                
+                
+                if(reply == JOptionPane.YES_OPTION){
+                    JOptionPane.showMessageDialog(null, "Lähdit kasinolta.");
+                    x = 0;
+                    System.exit(0);
+                }
+                if(reply == JOptionPane.NO_OPTION){
+                    x = 0;
+                }
+                    
             }
             }
         
@@ -75,6 +94,7 @@ public class Pelimerkit {
             pelimerkit = rahat / 10;
             setPelimerkit(pelimerkit);
             JOptionPane.showMessageDialog(null, "Sinulla on nyt " + pelimerkit + " pelimerkkiä");
+            x = 1;
         }
         }
         }
