@@ -1,0 +1,43 @@
+package JavaProjekti;
+
+public class Lompakko {
+   
+    private double Rahamäärä = 0;
+    double getRahamäärä(){
+        return Rahamäärä;
+    }
+
+    public  Lompakko(double rahat){
+
+         Rahamäärä = rahat;
+        
+    }
+    public  Lompakko(){
+        Rahamäärä = 0;
+    }
+    
+    public double setRahamäärä(double rahat){
+        Rahamäärä = rahat;
+        return Rahamäärä;
+        
+    }
+    public double lisää(double rahat){
+    Rahamäärä += rahat;
+    return Rahamäärä;
+    
+        
+            }  
+    public boolean vähennä( double rahat){
+        
+       
+                if(Rahamäärä - rahat > 0){
+                    Rahamäärä -= rahat;
+                    return true;
+                }
+                else
+                    return false;
+                
+                    
+    }
+
+}
