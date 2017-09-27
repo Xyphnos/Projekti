@@ -55,7 +55,9 @@ public class Pelimerkit {
     
     public void setLompakko(Lompakko lompakko){
         this.uLompakko = lompakko;
-       
+        
+        
+       //setterin sisäiset muuttujat
         int pelimerkit, rahamäärä, rahat, nosto, tili, muutos, merkit;
         int x = 0;
         int y = 0;
@@ -293,7 +295,8 @@ public class Pelimerkit {
         
         //Jos ostat enemmän kuin lompakko antaa periksi niin voit vähentää ostettavien merkkien määrää
         while(y == 0){
-        if(lompakko.getRahamäärä() < rahat){
+            rahamäärä = (int)lompakko.getRahamäärä();
+        if(rahamäärä < rahat){
             int vastaus = JOptionPane.showConfirmDialog(null, "Yrität ostaa enemmän pelimerkkejä kuin lompakossasi on rahaa, haluatko vähentää ostamiesi merkkien määrää?.",
                     "",
                     JOptionPane.YES_NO_OPTION);
@@ -308,6 +311,7 @@ public class Pelimerkit {
             pelimerkit = rahat / 10;
             setPelimerkit(pelimerkit);
             JOptionPane.showMessageDialog(null, "Sinulla on nyt " + pelimerkit + " pelimerkkiä");
+            
             y = 1;
                 }
             }
@@ -338,7 +342,7 @@ public class Pelimerkit {
             pelimerkit = rahat / 10;
             setPelimerkit(pelimerkit);
             JOptionPane.showMessageDialog(null, "Sinulla on nyt " + pelimerkit + " pelimerkkiä");
-            x = 1;
+            y = 1;
         }
         }
         }
@@ -346,7 +350,7 @@ public class Pelimerkit {
                 else{
                     merkit = getPelimerkit();
                     muutos = muuta(merkit);
-                    JOptionPane.showMessageDialog(null, "Lähdit kasinolta. Voitit " + muutos + " euroa.");
+                    JOptionPane.showMessageDialog(null, "Lähdit kasinolta ja sinulle jäi " + muutos + " euron edestä pelimerkkejä.");
                     System.exit(0);
                 }
                 }
@@ -356,7 +360,7 @@ public class Pelimerkit {
             else{
                 merkit = getPelimerkit();
                 muutos = muuta(merkit);
-                JOptionPane.showMessageDialog(null, "Päätit olla nostamatta rahaa ja lähdit kasinolta. Voitit kasinolta " + muutos + " euroa.");
+                JOptionPane.showMessageDialog(null, "Päätit olla nostamatta rahaa ja lähdit kasinolta, sinulle jäi  " + muutos + " euron edestä pelimerkkejä.");
             }
         }
     }
