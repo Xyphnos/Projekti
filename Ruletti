@@ -1,23 +1,20 @@
-package JavaProjekti;
+package javaprojekti;
+
 import java.util.Scanner;
 import java.util.Random;
-public class Ruletti {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-      
-    Scanner lukija = new Scanner(System.in);
+public class Ruletti1 {
+ 
+private Pelimerkit pelimerkit;  
+public void setRuletti(Pelimerkit pelimerkit){
+    this.pelimerkit = pelimerkit;
+int panos, tulos, rulettinumero, numero;
+{
+Scanner lukija = new Scanner(System.in);
     Random satunnainen = new Random();
 
-   Pelimerkit pelimerkit = new Pelimerkit();
-    
+
    
-   int numero;    
-   int rulettinumero;
-   int tulos;
-   int panos;
+    
    
    panos = 1;
    
@@ -25,7 +22,7 @@ public class Ruletti {
    System.out.print("Aseta panoksesi numerolle(1-36): ");
                    numero = lukija.nextInt();
 
-if  ( (pelimerkit.getPelimerkit()- panos) < 0){
+if  ( (pelimerkit.getPelimerkit()- panos) < 0){          //Onko tarpeeksi pelimerkkejä panostamiseen?
          System.out.println("Sinulla ei ole tarpeeksi pelimerkkejä.");
 }
               else {
@@ -35,7 +32,7 @@ if  ( (pelimerkit.getPelimerkit()- panos) < 0){
     }          
 
   
- pelimerkit.setPelimerkit(pelimerkit.getPelimerkit()-panos);
+ pelimerkit.setPelimerkit(pelimerkit.getPelimerkit()-panos); //Vähentää panoksen pelimerkeistä.
         
                    
                    
@@ -67,3 +64,13 @@ if (tulos > 0)
 }
     }
 }
+}
+
+
+
+
+
+
+
+
+
