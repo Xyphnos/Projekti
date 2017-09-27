@@ -11,6 +11,9 @@ public class Ruletti {
     Scanner lukija = new Scanner(System.in);
     Random satunnainen = new Random();
 
+   Pelimerkit pelimerkit = new Pelimerkit();
+    
+   
    int numero;    
    int rulettinumero;
    int tulos;
@@ -22,7 +25,7 @@ public class Ruletti {
    System.out.print("Aseta panoksesi numerolle(0-36): ");
                    numero = lukija.nextInt();
 
-if  ( (Pelimerkit.getPelimerkit() - panos) < 0){
+if  ( (pelimerkit.getPelimerkit()- panos) < 0){
          System.out.println("Sinulla ei ole tarpeeksi pelimerkkejä.");
 }
               else {
@@ -30,6 +33,10 @@ if  ( (Pelimerkit.getPelimerkit() - panos) < 0){
             
 
     }          
+
+  
+ pelimerkit.setPelimerkit(pelimerkit.getPelimerkit()-panos);
+        
                    
                    
 
@@ -47,7 +54,8 @@ if  ( (Pelimerkit.getPelimerkit() - panos) < 0){
 if (tulos > 0)
            {
                System.out.println("Onneksi olkoon! Voitit 36 pelimerkkiä!");
-               System.out.println("Sinulla on nyt" + (Pelimerkit.getPelimerkit() + tulos)"pelimerkkiä." );
+               pelimerkit.setPelimerkit(pelimerkit.getPelimerkit() + tulos);
+               System.out.println("Pelimerkkiesi määrä on nyt: " + pelimerkit.getPelimerkit());
                
                
                
@@ -55,7 +63,7 @@ if (tulos > 0)
            else
            {
                System.out.println("Hävisit!");
-               System.out.println("Sinulla on nyt" + (Pelimerkit.getPelimerkit() - 1)"pelimerkkiä.");
+              System.out.println("Pelimerkkiesi määrä on nyt " + pelimerkit.getPelimerkit());
 }
     }
 }
