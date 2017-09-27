@@ -1,0 +1,37 @@
+package JavaProjekti;
+
+public class Pankkitili {
+    
+
+    private double PRahamäärä = 0;
+    
+    public double getPRahamäärä(){
+    return PRahamäärä;
+    
+    
+    }
+    public Pankkitili(){
+        
+    
+      PRahamäärä = 0;  
+    }
+    public Pankkitili( double rahat){
+    
+    PRahamäärä = rahat;
+    
+    }
+    public double setPRahamäärä(double rahat){
+        PRahamäärä = rahat;
+        return PRahamäärä;
+    } 
+    public boolean vähennä( double rahat){
+        
+       
+                if(PRahamäärä - rahat > 0){
+                    PRahamäärä -= rahat;
+                    return true;
+                }
+                else
+                    return false;
+}
+}
