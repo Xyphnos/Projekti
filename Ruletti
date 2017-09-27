@@ -22,7 +22,7 @@ public class Ruletti {
    panos = 1;
    
    
-   System.out.print("Aseta panoksesi numerolle(0-36): ");
+   System.out.print("Aseta panoksesi numerolle(1-36): ");
                    numero = lukija.nextInt();
 
 if  ( (pelimerkit.getPelimerkit()- panos) < 0){
@@ -40,13 +40,13 @@ if  ( (pelimerkit.getPelimerkit()- panos) < 0){
                    
                    
 
- rulettinumero = satunnainen.nextInt(37);
+ rulettinumero = satunnainen.nextInt(36);
 
            System.out.println("Voittava numero on: " + rulettinumero);
            
            {
                if (rulettinumero == numero)
-                   tulos = 36;
+                   tulos = 35;
                else
                    tulos = 0;
            }
