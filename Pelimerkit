@@ -56,7 +56,7 @@ public class Pelimerkit {
     public void setLompakko(Lompakko lompakko){
         this.uLompakko = lompakko;
        
-        int pelimerkit, rahamäärä, rahat, nosto, tili;
+        int pelimerkit, rahamäärä, rahat, nosto, tili, muutos, merkit;
         int x = 0;
         int y = 0;
         
@@ -344,8 +344,8 @@ public class Pelimerkit {
         }
                 }
                 else{
-                    int merkit = getPelimerkit();
-                int muutos = muuta(merkit);
+                    merkit = getPelimerkit();
+                    muutos = muuta(merkit);
                     JOptionPane.showMessageDialog(null, "Lähdit kasinolta. Voitit " + muutos + " euroa.");
                     System.exit(0);
                 }
@@ -354,8 +354,8 @@ public class Pelimerkit {
             }
             //jos rahaa ei nosteta
             else{
-                int merkit = getPelimerkit();
-                int muutos = muuta(merkit);
+                merkit = getPelimerkit();
+                muutos = muuta(merkit);
                 JOptionPane.showMessageDialog(null, "Päätit olla nostamatta rahaa ja lähdit kasinolta. Voitit kasinolta " + muutos + " euroa.");
             }
         }
