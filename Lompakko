@@ -1,7 +1,9 @@
+
 package JavaProjekti;
 
 public class Lompakko {
    
+    private Pankkitili uTili;
     private double Rahamäärä = 0;
     double getRahamäärä(){
         return Rahamäärä;
@@ -14,6 +16,9 @@ public class Lompakko {
     }
     public  Lompakko(){
         Rahamäärä = 0;
+    }
+    public void SetTili(Pankkitili uTili){
+        this.uTili = uTili;
     }
     
     public double setRahamäärä(double rahat){
