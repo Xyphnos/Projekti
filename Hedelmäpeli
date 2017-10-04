@@ -1,0 +1,95 @@
+package JavaProjekti;
+import javax.swing.*;
+import java.util.*;
+public class Hedelmäpeli {
+    Random random = new Random();
+    
+    private Peli peli;
+    private Pelimerkit pelimerkit;
+    private int pelimerkki = 0;
+    
+    
+    public void setHedelmäpeli(Pelimerkit pelimerkit){
+        this.pelimerkit = pelimerkit;
+        Random random = new Random();
+    
+    int uPelimerkit, reply, vastaus, input, vast, merkit, voitot;
+    int x = 0;
+    int y = 0;
+    char var1, var2, var3;
+    String variable;
+    Peli uPeli = new Peli('$' ,'£' ,'O' ,'7');
+    Peli aPeli = new Peli();
+    
+    
+    // saattaa aiheuttaa bugeja, tarkista testauksessa!!!!!
+    uPelimerkit = pelimerkit.getPelimerkit();
+    
+    JOptionPane.showMessageDialog(null, "Sinulla on " + uPelimerkit + " pelimerkkiä.");
+    while(x == 0)
+    if(uPelimerkit > 0){
+        reply = JOptionPane.showConfirmDialog(null, "Haluatko pelata hedelmäpeliä?",
+                "",
+                JOptionPane.YES_NO_OPTION);
+        if(reply == JOptionPane.YES_OPTION){
+            JOptionPane.showMessageDialog(null, "Tervetuloa hedelmäpeliin, jos voitat niin saat syöttämäsi määrän pelimerkkejä kaksinkertaisena takaisin.");
+            while(y == 0){
+            merkit = Integer.parseInt(JOptionPane.showInputDialog(null, "Syötä pelimerkit."));
+            if(merkit < uPelimerkit){
+                JOptionPane.showMessageDialog(null, "Sinulla ei ole tarpeeksi pelimerkkejä, syötä vähemmän");
+                y = 1;
+            }
+            else{
+                pelimerkit.vähennä(merkit);
+                for(int i = 0; i < 3; i++){
+                uPeli.setPeli('$', '£', 'O', '7');
+                }
+                var1 = uPeli.toChar();
+                var2 = uPeli.toChar();
+                var3 = uPeli.toChar();
+                JOptionPane.showMessageDialog(null, "|<><><>| \n|" + var1 +"  "+ var2 +"  " + var3 +"   " + "| \n|<><><>|");
+                if((var1 == var2) && (var2 == var3) && (var3 == var1)){
+                    voitot = pelimerkit.multiply2(merkit);
+                    pelimerkit.lisää(voitot);
+                 JOptionPane.showMessageDialog(null, "Voitit " + voitot + " pelimerkkiä!");
+                }
+                else{
+                    input = JOptionPane.showConfirmDialog(null, "Hävisit pelin, haluatko pelata uudestaan?",
+                            "Hävisit.",
+                            JOptionPane.YES_NO_OPTION);
+                    if(input == JOptionPane.YES_OPTION){
+                        x = 0;    
+                    }
+                    if(input == JOptionPane.NO_OPTION){
+                     vast = JOptionPane.showConfirmDialog(null, "Haluatko lopettaa hedelmäpelin pelaamisen?",
+                             "",
+                             JOptionPane.YES_NO_OPTION);
+                     if(vast == JOptionPane.YES_OPTION){
+                         x = 1;
+                     }
+                     if(vast == JOptionPane.NO_OPTION){
+                        x = 0;   
+                     }
+                    }
+                }
+            }
+            }
+        }
+        if(reply == JOptionPane.NO_OPTION){
+            vastaus = JOptionPane.showConfirmDialog(null, "Haluatko palata takaisin kasinon aulaan?",
+                    "",
+                    JOptionPane.YES_NO_OPTION);
+            if(vastaus == JOptionPane.YES_OPTION){
+                x = 1;
+            }
+            if(vastaus == JOptionPane.NO_OPTION){
+                x = 0;
+            }
+        }
+    }
+    else{
+        JOptionPane.showMessageDialog(null, "Sinulla ei ole tarpeeksi pelimerkkejä pelata hedelmäpeliä, \n palaat kasinon aulaan.");
+    }
+    }
+}
+//author Arttu Saarimaa.
