@@ -48,6 +48,10 @@ public class Pelimerkit {
                 
                     
     }
+    public int multiply2(int merkit){
+        merkit = pelimerkit*2;
+        return pelimerkit;
+    }
     
     public void nosto(Pankkitili tili){
         this.uTili = tili;
@@ -62,6 +66,8 @@ public class Pelimerkit {
         int x = 0;
         int y = 0;
         
+        uTili.setPRahamäärä(1000);
+        uLompakko.setRahamäärä(9);
         uLompakko.SetTili(uTili);
         rahamäärä = (int)lompakko.getRahamäärä();
         JOptionPane.showMessageDialog(null,"Yksi pelimerkki on 10 euron arvoinen.");
@@ -365,3 +371,4 @@ public class Pelimerkit {
         }
     }
 }
+//author Arttu Saarimaa.
