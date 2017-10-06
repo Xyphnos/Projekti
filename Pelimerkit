@@ -10,8 +10,9 @@ public class Pelimerkit {
     private Pankkitili uTili;
     private int pelimerkit;
     
+
     public Pelimerkit(){
-        
+        pelimerkit = 0;
     }
     
     public int getPelimerkit(){
@@ -26,20 +27,22 @@ public class Pelimerkit {
     public Pelimerkit(int merkit){
        pelimerkit = merkit;
     }  
+    
     public int muuta(int raha){
         raha = pelimerkit*10;
         return pelimerkit;
     }
+    
     public int lisää(int merkit){
     pelimerkit += merkit;
     return pelimerkit;
     
         
             }  
-    public boolean vähennä( int merkit){
+    public boolean vähennä(int merkit){
         
        
-                if(pelimerkit - merkit > 0){
+                if(pelimerkit > 0){
                     pelimerkit -= merkit;
                     return true;
                 }
@@ -50,7 +53,7 @@ public class Pelimerkit {
     }
     public int multiply2(int merkit){
         merkit = pelimerkit*2;
-        return pelimerkit;
+        return merkit;
     }
     
     public void nosto(Pankkitili tili){
@@ -62,13 +65,10 @@ public class Pelimerkit {
         
         
        //setterin sisäiset muuttujat
-        int pelimerkit, rahamäärä, rahat, nosto, tili, muutos, merkit;
+        int rahamäärä, rahat, nosto, tili, muutos, pelimerkit;
         int x = 0;
         int y = 0;
         
-        uTili.setPRahamäärä(1000);
-        uLompakko.setRahamäärä(9);
-        uLompakko.SetTili(uTili);
         rahamäärä = (int)lompakko.getRahamäärä();
         JOptionPane.showMessageDialog(null,"Yksi pelimerkki on 10 euron arvoinen.");
         
@@ -93,25 +93,24 @@ public class Pelimerkit {
                 if(rahat <= rahamäärä){
                 lompakko.vähennä(rahat);
             pelimerkit = rahat / 10;
-            setPelimerkit(pelimerkit);
-            JOptionPane.showMessageDialog(null, "Sinulla on nyt " + pelimerkit + " pelimerkkiä");
+            lisää(pelimerkit);
+            JOptionPane.showMessageDialog(null, "Sinulla on nyt " + this.pelimerkit + " pelimerkkiä");
             x = 1;
                 }
             }
             
             
             if(reply == JOptionPane.NO_OPTION){
-                JOptionPane.showConfirmDialog(null, "Haluatko lähteä kasinolta?",
+                int vastaus = JOptionPane.showConfirmDialog(null, "Haluatko palata aulaan?",
                         "",
                         JOptionPane.YES_NO_OPTION);
                 
                 
-                if(reply == JOptionPane.YES_OPTION){
-                    JOptionPane.showMessageDialog(null, "Lähdit kasinolta.");
-                    x = 0;
-                    System.exit(0);
+                if(vastaus == JOptionPane.YES_OPTION){
+                    JOptionPane.showMessageDialog(null, "Palasit aulaan.");
+                    x = 1;
                 }
-                if(reply == JOptionPane.NO_OPTION){
+                if(vastaus == JOptionPane.NO_OPTION){
                     x = 0;
                 }
                     
@@ -123,8 +122,8 @@ public class Pelimerkit {
         else{
             lompakko.vähennä(rahat);
             pelimerkit = rahat / 10;
-            setPelimerkit(pelimerkit);
-            JOptionPane.showMessageDialog(null, "Sinulla on nyt " + pelimerkit + " pelimerkkiä");
+            lisää(pelimerkit);
+            JOptionPane.showMessageDialog(null, "Sinulla on nyt " + this.pelimerkit + " pelimerkkiä");
             x = 1;
         }
         }
@@ -147,9 +146,10 @@ public class Pelimerkit {
                 lompakko.lisää(nosto);
                     JOptionPane.showMessageDialog(null, "Lompakossasi on nyt " + lompakko.getRahamäärä() + " euroa");
                     lompakko.getRahamäärä();
+                    
                     if(lompakko.getRahamäärä() >= 10){
         rahat = Integer.parseInt(JOptionPane.showInputDialog(null, "syötä rahamäärä jolla haluat ostaa pelimerkkejä kymmeninä euroina: "));
-        
+        y = 0;
         
         //Jos ostat enemmän kuin lompakko antaa periksi niin voit vähentää ostettavien merkkien määrää
         while(y == 0){
@@ -166,23 +166,22 @@ public class Pelimerkit {
                 if(rahat <= rahamäärä){
                 lompakko.vähennä(rahat);
             pelimerkit = rahat / 10;
-            setPelimerkit(pelimerkit);
-            JOptionPane.showMessageDialog(null, "Sinulla on nyt " + pelimerkit + " pelimerkkiä");
+            lisää(pelimerkit);
+            JOptionPane.showMessageDialog(null, "Sinulla on nyt " + this.pelimerkit + " pelimerkkiä");
             y = 1;
                 }
             }
             
             
             if(reply == JOptionPane.NO_OPTION){
-                JOptionPane.showConfirmDialog(null, "Haluatko lähteä kasinolta?",
+                JOptionPane.showConfirmDialog(null, "Haluatko palata aulaan?",
                         "",
                         JOptionPane.YES_NO_OPTION);
                 
                 
                 if(reply == JOptionPane.YES_OPTION){
-                    JOptionPane.showMessageDialog(null, "Lähdit kasinolta.");
-                    y = 0;
-                    System.exit(0);
+                    JOptionPane.showMessageDialog(null, "Palasait aulaan.");
+                    y = 1;
                 }
                 if(reply == JOptionPane.NO_OPTION){
                     y = 0;
@@ -196,9 +195,10 @@ public class Pelimerkit {
         else{
             lompakko.vähennä(rahat);
             pelimerkit = rahat / 10;
-            setPelimerkit(pelimerkit);
-            JOptionPane.showMessageDialog(null, "Sinulla on nyt " + pelimerkit + " pelimerkkiä");
+            lisää(pelimerkit);
+            JOptionPane.showMessageDialog(null, "Sinulla on nyt " + this.pelimerkit + " pelimerkkiä");
             y = 1;
+            x = 1;
         }
         }
         }
@@ -209,7 +209,7 @@ public class Pelimerkit {
                     
                     
                 if(uTili.getPRahamäärä() < nosto){
-                    Object[] options = {"Nosta vähemmän", "Myy vaatteesi", "Lähde kasinolta"};
+                    Object[] options = {"Nosta vähemmän", "Myy vaatteesi", "Palaa aulaan"};
                     int n = JOptionPane.showOptionDialog(null,
                             "Tililläsi ei ole tarpeeksi rahaa.",
                             "Mitä haluat tehdä?",
@@ -232,7 +232,7 @@ public class Pelimerkit {
                     JOptionPane.showMessageDialog(null, "Lompakossasi on nyt " + lompakko.getRahamäärä() + " euroa");
                     if(lompakko.getRahamäärä() >= 10){
         rahat = Integer.parseInt(JOptionPane.showInputDialog(null, "syötä rahamäärä jolla haluat ostaa pelimerkkejä kymmeninä euroina: "));
-        
+        y = 0;
         
         //Jos ostat enemmän kuin lompakko antaa periksi niin voit vähentää ostettavien merkkien määrää
         while(y == 0){
@@ -249,23 +249,22 @@ public class Pelimerkit {
                 if(rahat <= rahamäärä){
                 lompakko.vähennä(rahat);
             pelimerkit = rahat / 10;
-            setPelimerkit(pelimerkit);
-            JOptionPane.showMessageDialog(null, "Sinulla on nyt " + pelimerkit + " pelimerkkiä");
+            lisää(pelimerkit);
+            JOptionPane.showMessageDialog(null, "Sinulla on nyt " + this.pelimerkit + " pelimerkkiä");
             y = 1;
                 }
             }
             
             
             if(reply == JOptionPane.NO_OPTION){
-                JOptionPane.showConfirmDialog(null, "Haluatko lähteä kasinolta?",
+                JOptionPane.showConfirmDialog(null, "Haluatko palata aulaan?",
                         "",
                         JOptionPane.YES_NO_OPTION);
                 
                 
                 if(reply == JOptionPane.YES_OPTION){
-                    JOptionPane.showMessageDialog(null, "Lähdit kasinolta.");
-                    y = 0;
-                    System.exit(0);
+                    JOptionPane.showMessageDialog(null, "Palasit aulaan.");
+                    y = 1;
                 }
                 if(reply == JOptionPane.NO_OPTION){
                     y = 0;
@@ -279,9 +278,10 @@ public class Pelimerkit {
         else{
             lompakko.vähennä(rahat);
             pelimerkit = rahat / 10;
-            setPelimerkit(pelimerkit);
-            JOptionPane.showMessageDialog(null, "Sinulla on nyt " + pelimerkit + " pelimerkkiä");
+            lisää(pelimerkit);
+            JOptionPane.showMessageDialog(null, "Sinulla on nyt " + this.pelimerkit + " pelimerkkiä");
             y = 1;
+            x = 1;
         }
         }
         }
@@ -315,8 +315,8 @@ public class Pelimerkit {
                 if(rahat <= rahamäärä){
                 lompakko.vähennä(rahat);
             pelimerkit = rahat / 10;
-            setPelimerkit(pelimerkit);
-            JOptionPane.showMessageDialog(null, "Sinulla on nyt " + pelimerkit + " pelimerkkiä");
+            lisää(pelimerkit);
+            JOptionPane.showMessageDialog(null, "Sinulla on nyt " + this.pelimerkit + " pelimerkkiä");
             
             y = 1;
                 }
@@ -324,15 +324,14 @@ public class Pelimerkit {
             
             
             if(reply == JOptionPane.NO_OPTION){
-                JOptionPane.showConfirmDialog(null, "Haluatko lähteä kasinolta?",
+                JOptionPane.showConfirmDialog(null, "Haluatko palata aulaan?",
                         "",
                         JOptionPane.YES_NO_OPTION);
                 
                 
                 if(reply == JOptionPane.YES_OPTION){
-                    JOptionPane.showMessageDialog(null, "Lähdit kasinolta.");
-                    y = 0;
-                    System.exit(0);
+                    JOptionPane.showMessageDialog(null, "Palasit aulaan.");
+                    y = 1;
                 }
                 if(reply == JOptionPane.NO_OPTION){
                     y = 0;
@@ -346,27 +345,28 @@ public class Pelimerkit {
         else{
             lompakko.vähennä(rahat);
             pelimerkit = rahat / 10;
-            setPelimerkit(pelimerkit);
-            JOptionPane.showMessageDialog(null, "Sinulla on nyt " + pelimerkit + " pelimerkkiä");
+            lisää(pelimerkit);
+            JOptionPane.showMessageDialog(null, "Sinulla on nyt " + this.pelimerkit + " pelimerkkiä");
             y = 1;
+            x = 1;
         }
         }
         }
                 }
                 else{
-                    merkit = getPelimerkit();
-                    muutos = muuta(merkit);
-                    JOptionPane.showMessageDialog(null, "Lähdit kasinolta ja sinulle jäi " + muutos + " euron edestä pelimerkkejä.");
-                    System.exit(0);
+                    pelimerkit = getPelimerkit();
+                    muutos = muuta(pelimerkit);
+                    JOptionPane.showMessageDialog(null, "Palasit aulaan, sinulla on " + muutos + " pelimerkkeiä.");
+                    x = 1;
                 }
                 }
             }
             }
             //jos rahaa ei nosteta
             else{
-                merkit = getPelimerkit();
-                muutos = muuta(merkit);
-                JOptionPane.showMessageDialog(null, "Päätit olla nostamatta rahaa ja lähdit kasinolta, sinulle jäi  " + muutos + " euron edestä pelimerkkejä.");
+                pelimerkit = getPelimerkit();
+                muutos = muuta(pelimerkit);
+                JOptionPane.showMessageDialog(null, "Menit takaisin aulaan, sinulla on " + muutos + " pelimerkkiä.");
             }
         }
     }
