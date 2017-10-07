@@ -1,52 +1,100 @@
-    int käyttäjä;
-    int heittoja;
-      int nopastaSaatavaLukema;
-      private double rahaa;
-      boolean vähennä;
-    private Random random;
-    Scanner Lukija = new Scanner(System.in);
+    package JavaProjekti;
+
+import javax.swing.*;
+import java.util.*;
+public class Noppapeli{
+    
     private  Pelimerkit pelimerkit;
-  
-
-   public nopanhetto(int Pelimerkit) {
-    Pelimerkit = 40;
-   //Pelimerkkejä olisi 40
+      
+   public Noppapeli() {
   }
-   public nopanhetto(double rahaa){
-       this.rahaa = rahaa;
-   }
        
-   public boolean Vähennä (double rahaa){
-    this.rahaa -= 1;
-        return vähennä;
-        //Tää pitäs vähentää 1 pelimerkki nopanheittäimsesta mutta ei toimi
-        }
-    public void setnopanhetto(Pelimerkit pelimerkit){
+    public void setNoppapeli(Pelimerkit pelimerkit){
     this.pelimerkit = pelimerkit;
-    System.out.println("Arvaa nopan lukema: ");
-    käyttäjä  = Lukija.nextInt();
-     
-       System.out.print("Heitetaan noppaa..");
-        Random arpoja = new Random();
-        nopastaSaatavaLukema = arpoja.nextInt(6) + 1;
-        System.out.println("Nopasta tuli: " + nopastaSaatavaLukema);
-        
-         
-     
-   
-        
-     
     
-    if  (pelimerkit.getPelimerkit() <= 0){ 
-         System.out.println("Sinulla ei ole tarpeeksi pelimerkkejä.");
-}
-              else {
-            System.out.println("Voit jatkaa nopanheittämistä.");
-            //Miten saan ohjelman jatkamaan jos on pelimerkkejä
-
+    Random random = new Random();
+    
+    int käyttäjä, reply, vastaus, lukema, merkit;
+    boolean x = true;
+    boolean y = true;
+    
+    
+    while(y){
+    merkit = pelimerkit.getPelimerkit();
+    vastaus = JOptionPane.showConfirmDialog(null, "Tervetuloa noppapeliin, panos on yksi pelimerkki, haluatko pelata?",
+            "Confirm",
+            JOptionPane.YES_NO_OPTION);
+    if(vastaus == JOptionPane.YES_OPTION){
+        y = true;
+        x = true;
+    }
+    if(vastaus == JOptionPane.NO_OPTION){
+        y = false;
+        x = false;
+    }
+    
+    if(merkit > 0){
+        
+    
+    while(x){
+        if(pelimerkit.getPelimerkit() == 0){
+        JOptionPane.showMessageDialog(null, "Sinulla ei ole tarpeeksi pelimerkkejä.");
+        y = false;
+        x = false;
+    }
+        else{
+    käyttäjä  = Integer.parseInt(JOptionPane.showInputDialog(null, "Arvaa nopan luku väliltä 1-6:"));
+    if((käyttäjä > 6) || (käyttäjä < 1)){
+        JOptionPane.showMessageDialog(null, "Anna luku 1 ja 6 väliltä.");
+        x = true;
+    }
+    else{
+        pelimerkit.vähennä(1);
+        lukema = random.nextInt((6)-1) + 1;
+        JOptionPane.showMessageDialog(null,"Nopan luku oli: " + lukema);
+        
+    if(käyttäjä == lukema){
+        pelimerkit.lisää(6);
+        reply = JOptionPane.showConfirmDialog(null, "Voitit 6 pelimerkkiä, haluatko pelata uudestaan?",
+        "Confirm",
+        JOptionPane.YES_NO_OPTION);
+        
+        if(reply == JOptionPane.YES_OPTION){
+        x = true;
+        y = false;
+    }
+    
+    if(reply == JOptionPane.NO_OPTION){
+        x = false;
+        y = false;
+    }
+    }
+    
+    else{
+        reply = JOptionPane.showConfirmDialog(null, "Hävisit, haluatko pelata uudestaan?",
+        "Confirm",
+        JOptionPane.YES_NO_OPTION);
+        
+        if(reply == JOptionPane.YES_OPTION){
+        x = true;
+        y = false;
+        }
+    
+        if(reply == JOptionPane.NO_OPTION){
+        x = false;
+        y = false;
+        }
+    }
+    }
+    }
+    }
+    }
+    
+    else{
+        JOptionPane.showMessageDialog(null, "Sinulla ei ole tarpeeksi pelimerkkejä.");
+        y = false;
     } 
-    
     }
-
+    }
    
-    }
+}
