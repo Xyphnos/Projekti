@@ -1,28 +1,52 @@
-package tehtävät4;
-import java.util.Random;
-import java.util.Scanner;
-public class nopanhetto {
-Scanner Lukija = new Scanner(System.in);
+    int käyttäjä;
     int heittoja;
-     private int sivuja;
+      int nopastaSaatavaLukema;
+      private double rahaa;
+      boolean vähennä;
     private Random random;
-    private int kuusiSivuinennoppan;
-    
-    private Pelimerkit pelimerkit;  
-public void setnopanhetto(Pelimerkit pelimerkit){
-    this.pelimerkit = pelimerkit;
-}
-   
-    public nopanhetto(int sivuja) {
-        this.sivuja = sivuja;
-        this.random = new Random();
-    }
-         
+    Scanner Lukija = new Scanner(System.in);
+    private  Pelimerkit pelimerkit;
+  
 
-    public int heitto() {
-        return this.random.nextInt(sivuja) + 1;
-        
+   public nopanhetto(int Pelimerkit) {
+    Pelimerkit = 40;
+   //Pelimerkkejä olisi 40
+  }
+   public nopanhetto(double rahaa){
+       this.rahaa = rahaa;
+   }
        
+   public boolean Vähennä (double rahaa){
+    this.rahaa -= 1;
+        return vähennä;
+        //Tää pitäs vähentää 1 pelimerkki nopanheittäimsesta mutta ei toimi
+        }
+    public void setnopanhetto(Pelimerkit pelimerkit){
+    this.pelimerkit = pelimerkit;
+    System.out.println("Arvaa nopan lukema: ");
+    käyttäjä  = Lukija.nextInt();
+     
+       System.out.print("Heitetaan noppaa..");
+        Random arpoja = new Random();
+        nopastaSaatavaLukema = arpoja.nextInt(6) + 1;
+        System.out.println("Nopasta tuli: " + nopastaSaatavaLukema);
+        
          
-    }
+     
+   
+        
+     
+    
+    if  (pelimerkit.getPelimerkit() <= 0){ 
+         System.out.println("Sinulla ei ole tarpeeksi pelimerkkejä.");
 }
+              else {
+            System.out.println("Voit jatkaa nopanheittämistä.");
+            //Miten saan ohjelman jatkamaan jos on pelimerkkejä
+
+    } 
+    
+    }
+
+   
+    }
