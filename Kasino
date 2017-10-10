@@ -1,0 +1,76 @@
+package JavaProjekti;
+
+import javax.swing.JOptionPane;
+
+public class Kasino {
+  
+    
+    private Hedelmäpeli hedelmäpeli;
+    private Pelimerkit pelimerkit;
+    private Ruletti ruletti;
+    private Lompakko lompakko;
+    private Pankkitili tili;
+    
+    public void setKasino(Pelimerkit merkit){
+        this.pelimerkit = merkit;
+        
+        Hedelmäpeli hedelmäpeli = new Hedelmäpeli();
+        Lompakko lompakko = new Lompakko();
+        Pankkitili tili = new Pankkitili();
+        Ruletti ruletti = new Ruletti();
+        Noppapeli noppapeli = new Noppapeli();
+        Korttipeli korttipeli = new Korttipeli();
+        
+        tili.setPRahamäärä(1000);
+        lompakko.setRahamäärä(45000);
+        lompakko.SetTili(tili);
+        
+    boolean x = true;
+    int n, reply;
+    while(x){
+    
+    Object[] options = {"Hedelmäpeli", "Noppapeli", "Ruletti", "Korttipeli", "Tarkista", "Osta pelimerkkejä", "Lähde kasinolta"};
+    n = JOptionPane.showOptionDialog(null,
+            "Tervetuloa kasinolle, mitä haluat tehdä?",
+            "Tervetuloa",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            options,
+            options[6]);
+    if(n == 0){
+        hedelmäpeli.setHedelmäpeli(pelimerkit);
+    }
+    if(n == 1){
+       noppapeli.setNoppapeli(pelimerkit);
+    }
+    if(n == 2){
+        ruletti.setRuletti(pelimerkit);
+    }
+    if(n == 3){
+        korttipeli.setKortit(pelimerkit);
+    }
+    if(n == 4){
+        JOptionPane.showMessageDialog(null,
+        "Sinulla on " + pelimerkit.getPelimerkit() + " pelimerkkiä, " + lompakko.getRahamäärä() + " euroa lompakossasi ja \n" + tili.getPRahamäärä() + " euroa tililläsi" );
+        
+    }
+    if(n == 5){
+        pelimerkit.nosto(tili);
+        pelimerkit.setLompakko(lompakko);
+    }
+    if(n == 6){
+        reply = JOptionPane.showConfirmDialog(null, "Haluatko varmasti lähteä kasinolta?",
+                "Varmistus",
+                JOptionPane.YES_NO_OPTION);
+        if(reply == JOptionPane.YES_OPTION){
+            x = false;
+        }
+        if(reply == JOptionPane.NO_OPTION){
+            x = true;
+        }
+    }
+    } 
+}
+}
+// Author Arttu Saarimaa.
