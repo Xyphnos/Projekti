@@ -1,0 +1,48 @@
+package JavaProjekti;
+
+import javax.swing.JOptionPane;
+import java.util.Random;
+public class Peli {
+    
+    private char merkki1, merkki2, merkki3, merkki4;
+    Random random = new Random();
+    
+    public Peli(){   
+    }
+    
+    public char toChar(){
+    char merkki = 0;
+    int numero = random.nextInt(4);
+    if(numero == 0){
+        merkki = merkki1;
+    }
+    if(numero == 1){
+        merkki = merkki2;
+    }
+    if(numero == 2){
+        merkki = merkki3;
+    }
+    if(numero == 3){
+        merkki = merkki4;
+    }
+    return merkki;
+    }
+    
+    public int Arpa(int arpa){
+        arpa = random.nextInt(3);
+        return arpa;
+    }
+    
+    public Peli(char merkki1,char merkki2,char merkki3,char merkki4){
+       this.merkki1 = merkki1;
+       this.merkki2 = merkki2;
+       this.merkki3 = merkki3;
+       this.merkki4 = merkki4;
+    }
+    public void setPeli(char merkki1,char merkki2,char merkki3,char merkki4){
+        this.merkki1 = merkki1;
+        this.merkki2 = merkki2;
+        this.merkki3 = merkki3;
+        this.merkki4 = merkki4;
+    }
+}
