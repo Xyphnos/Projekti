@@ -17,7 +17,7 @@ public class Korttipeli {
         
         while(x){
             
-        if(merkit > 3){
+        if(pelimerkit.getPelimerkit() >= 2){
             reply = JOptionPane.showConfirmDialog(null, "Tervetuloa korttipeliin! \n Haluatko pelata korttia?",
                     "Confirm",
                     JOptionPane.YES_NO_OPTION);
@@ -26,6 +26,13 @@ public class Korttipeli {
             if(reply == JOptionPane.YES_OPTION){
                 
                 while(y){
+                
+                    if(pelimerkit.getPelimerkit() <=2){
+                        JOptionPane.showMessageDialog(null, "Sinulla ei ole tarpeeksi pelimerkkejä pelaamiseen.");
+                        x = false;
+                        y = false;
+                    }
+                    else{
                     jakaja = random.nextInt((13)-1)+1;
                     next = random.nextInt((13)-1)+1;
                     JOptionPane.showMessageDialog(null, "Jakajan kortti on " + jakaja);
@@ -140,6 +147,7 @@ public class Korttipeli {
                             x = false;
                         }
                     }
+                    }
                 }
             }
             if(reply == JOptionPane.NO_OPTION){
@@ -154,3 +162,4 @@ public class Korttipeli {
         }
     }
 }
+// Author Arttu Saarimaa.
