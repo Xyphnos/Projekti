@@ -1,0 +1,156 @@
+package JavaProjekti;
+
+import javax.swing.*;
+import java.util.*;
+public class Korttipeli {
+    
+    private Pelimerkit pelimerkit;
+    
+    public void setKortit(Pelimerkit pelimerkit){
+        this.pelimerkit = pelimerkit;
+        Random random = new Random();
+        boolean x = true;
+        boolean y = true;
+        int reply, vastaus, input, jakaja, next, merkit;
+        
+        merkit = pelimerkit.getPelimerkit();
+        
+        while(x){
+            
+        if(merkit > 3){
+            reply = JOptionPane.showConfirmDialog(null, "Tervetuloa korttipeliin! \n Haluatko pelata korttia?",
+                    "Confirm",
+                    JOptionPane.YES_NO_OPTION);
+            JOptionPane.showMessageDialog(null, 
+                    "Ässä on pelin pienin kortti eli 1 ja kuningas suurin eli 13,\n yritä arvata onko seuraava kortti jakajan korttia suurempi, pienempi vai yhtäsuuri. \n Pelin panos on 3 pelimerkkiä, voittokerroin on 2x \n paitsi jos arvaat oikein yhtäsuuren kortin jolloin voittokerroin on 4x.");
+            if(reply == JOptionPane.YES_OPTION){
+                
+                while(y){
+                    jakaja = random.nextInt((13)-1)+1;
+                    next = random.nextInt((13)-1)+1;
+                    JOptionPane.showMessageDialog(null, "Jakajan kortti on " + jakaja);
+                    Object[] options = {"Pienempi", "Suurempi", "yhtäsuuri"};
+                    vastaus = JOptionPane.showOptionDialog(null,
+                            "Onko seuraava kortti suurempi vai pienempi?",
+                            "Confirm",
+                            JOptionPane.YES_NO_OPTION,
+                            JOptionPane.QUESTION_MESSAGE,
+                            null,
+                            options,
+                            options[2]);
+                    if((vastaus == 0) & (jakaja > next )){
+                        pelimerkit.lisää(3);
+                        JOptionPane.showMessageDialog(null, "Voitit 3 pelimerkkiä!");
+                        input = JOptionPane.showConfirmDialog(null, 
+                                "Haluatko pelata uudestaan?",
+                                "Confirm",
+                                JOptionPane.YES_NO_OPTION);
+                        if(input == JOptionPane.YES_OPTION){
+                            y = true;
+                            x = true;
+                        }
+                        if(input == JOptionPane.NO_OPTION){
+                            JOptionPane.showMessageDialog(null, "Palasit kasinon aulaan.");
+                            y = false;
+                            x = false;
+                        }
+                    }
+                    if((vastaus == 0) & (jakaja < next)){
+                        pelimerkit.vähennä(3);
+                        JOptionPane.showMessageDialog(null, "Hävisit, seuraava kortti oli " + next);
+                        input = JOptionPane.showConfirmDialog(null, 
+                                "Haluatko pelata uudestaan?",
+                                "Confirm",
+                                JOptionPane.YES_NO_OPTION);
+                        if(input == JOptionPane.YES_OPTION){
+                            y = true;
+                            x = true;
+                        }
+                        if(input == JOptionPane.NO_OPTION){
+                            JOptionPane.showMessageDialog(null, "Palasit kasinon aulaan.");
+                            y = false;
+                            x = false;
+                        }
+                    }
+                    if((vastaus == 1) & (jakaja > next)){
+                        pelimerkit.vähennä(3);
+                        JOptionPane.showMessageDialog(null, "Hävisit, seuraava kortti oli " + next);
+                        input = JOptionPane.showConfirmDialog(null, 
+                                "Haluatko pelata uudestaan?",
+                                "Confirm",
+                                JOptionPane.YES_NO_OPTION);
+                        if(input == JOptionPane.YES_OPTION){
+                            y = true;
+                            x = true;
+                        }
+                        if(input == JOptionPane.NO_OPTION){
+                            JOptionPane.showMessageDialog(null, "Palasit kasinon aulaan.");
+                            y = false;
+                            x = false;
+                        }
+                    }
+                    if((vastaus == 1) & (jakaja < next)){
+                        pelimerkit.lisää(3);
+                        JOptionPane.showMessageDialog(null, "Voitit 3 pelimerkkiä!");
+                        input = JOptionPane.showConfirmDialog(null, 
+                                "Haluatko pelata uudestaan?",
+                                "Confirm",
+                                JOptionPane.YES_NO_OPTION);
+                        if(input == JOptionPane.YES_OPTION){
+                            y = true;
+                            x = true;
+                        }
+                        if(input == JOptionPane.NO_OPTION){
+                            JOptionPane.showMessageDialog(null, "Palasit kasinon aulaan.");
+                            y = false;
+                            x = false;
+                        }
+                    }
+                    if((vastaus == 2)&(jakaja == next)){
+                        pelimerkit.lisää(3);
+                        JOptionPane.showMessageDialog(null, "Voitit 3 pelimerkkiä!");
+                        input = JOptionPane.showConfirmDialog(null, 
+                                "Haluatko pelata uudestaan?",
+                                "Confirm",
+                                JOptionPane.YES_NO_OPTION);
+                        if(input == JOptionPane.YES_OPTION){
+                            y = true;
+                            x = true;
+                        }
+                        if(input == JOptionPane.NO_OPTION){
+                            JOptionPane.showMessageDialog(null, "Palasit kasinon aulaan.");
+                            y = false;
+                            x = false;
+                        }
+                    }
+                    if((vastaus == 2) & (jakaja != next)){
+                        pelimerkit.vähennä(3);
+                        JOptionPane.showMessageDialog(null, "Hävisit, seuraava kortti oli " + next);
+                        input = JOptionPane.showConfirmDialog(null, 
+                                "Haluatko pelata uudestaan?",
+                                "Confirm",
+                                JOptionPane.YES_NO_OPTION);
+                        if(input == JOptionPane.YES_OPTION){
+                            y = true;
+                            x = true;
+                        }
+                        if(input == JOptionPane.NO_OPTION){
+                            JOptionPane.showMessageDialog(null, "Palasit kasinon aulaan.");
+                            y = false;
+                            x = false;
+                        }
+                    }
+                }
+            }
+            if(reply == JOptionPane.NO_OPTION){
+                JOptionPane.showMessageDialog(null, "Palasit kasinon aulaan.");
+                x = false;
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Sinulla ei ole tarpeeksi pelimerkkejä pelaamiseen.");
+            x = false;
+        }
+        }
+    }
+}
