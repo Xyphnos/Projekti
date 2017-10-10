@@ -1,0 +1,75 @@
+package JavaProjekti;
+
+import javax.swing.JOptionPane;
+import java.util.Random;
+public class Ruletti {
+ 
+private Pelimerkit pelimerkit;  
+
+public void setRuletti(Pelimerkit pelimerkit){
+    this.pelimerkit = pelimerkit;
+    
+int panos, tulos, rulettinumero, numero, reply;
+boolean x = true;
+    Random satunnainen = new Random();
+
+
+   
+    
+   
+   panos = 1;
+   
+while(x){
+   
+   if(pelimerkit.getPelimerkit() <= 0){          //Onko tarpeeksi pelimerkkejä panostamiseen?
+   JOptionPane.showMessageDialog(null,"Sinulla ei ole tarpeeksi pelimerkkejä.");
+   x = false;
+   }
+   else {
+       numero = Integer.parseInt(JOptionPane.showInputDialog(null,"Aseta panoksesi numerolle(1-36): "));
+   JOptionPane.showMessageDialog(null,"Onnea peliin.");
+ 
+   pelimerkit.vähennä(panos); //Vähentää panoksen pelimerkeistä.
+        
+    rulettinumero = satunnainen.nextInt(35) + 1;
+
+        JOptionPane.showMessageDialog(null,"Voittava numero on: " + rulettinumero);
+           if (rulettinumero == numero){
+                   tulos = pelimerkit.lisää(35);
+               }
+               else{
+                   tulos = 0;
+           }
+           
+if (tulos == 35){
+               JOptionPane.showMessageDialog(null,"Onneksi olkoon! Voitit 36 pelimerkkiä!");
+               pelimerkit.setPelimerkit(pelimerkit.getPelimerkit() + tulos);
+               JOptionPane.showMessageDialog(null,"Pelimerkkiesi määrä on nyt: " + pelimerkit.getPelimerkit());
+               reply = JOptionPane.showConfirmDialog(null, "Haluatko pelata uudestaan?",
+                       "Confirm",
+                       JOptionPane.YES_NO_OPTION);
+               if(reply == JOptionPane.YES_OPTION){
+                   x = true;
+               }
+               if(reply == JOptionPane.NO_OPTION){
+                   x = false;
+               }
+               }
+
+           else{
+               JOptionPane.showMessageDialog(null,"Hävisit!");
+               reply = JOptionPane.showConfirmDialog(null, "Haluatko pelata uudestaan?",
+                       "Confirm",
+                       JOptionPane.YES_NO_OPTION);
+              JOptionPane.showMessageDialog(null,"Pelimerkkiesi määrä on nyt " + pelimerkit.getPelimerkit());
+              if(reply == JOptionPane.YES_OPTION){
+                   x = true;
+               }
+               if(reply == JOptionPane.NO_OPTION){
+                   x = false;
+               }
+}
+    }
+}
+}
+}
